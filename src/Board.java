@@ -20,37 +20,38 @@ public class Board {    //class that designs the board
                         {' ', '|', ' ', '|', ' '}};
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 5; j++){
-                System.out.println(board[i][j]);
+                System.out.print(board[i][j]);
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
         */
 
         int i, j, k = 0;
+        System.out.print("\n");
         for (i = 0; i <= 18; i++)//width of 19 characters
         {
             if ((i == 0) || (i == 6) || (i == 12) || (i == 18))//places for line dividers
                 for (j = 0; j <= 18; j++) {//adds line dividers (length of 19 characters)
-                    System.out.println("-");
+                    System.out.print("-");
                 }
             else {
                 for (j = 0; j <= 18; j++) {
                     if ((j == 0) || (j == 6) || (j == 12) || (j == 18))//places for column dividers
-                        System.out.println("|");//column divider
+                        System.out.print("|");//column divider
                     else {
                         if ((j % 3 == 0) && ((i == 3) || (i == 9) || (i == 15))){//center of the boxes (6, 12 and 18 are checked by the external if)
-                            if(b[k] != 0) {
-                                System.out.println(b[k]);//prints the content of the box from the corresponding table
+                            if(Character.compare(b[k], '0') != 0) {
+                                System.out.print(b[k]);//prints the content of the box from the corresponding table
                             }else{
-                                System.out.println(" ");//prints the content of the box from the corresponding table
+                                System.out.print(" ");//prints the content of the box from the corresponding table
                             }
                             k++;//counts the place of the table that the repetition proceeds to
                         } else
-                            System.out.println(" ");
+                            System.out.print(" ");
                         }
                     }
                 }
-            System.out.println("\n");
+            System.out.print("\n");
         }
     }
 
@@ -78,7 +79,7 @@ public class Board {    //class that designs the board
     }
 
     public boolean filled(int box){
-        if (b[box-1] != '0'){
+        if (Character.compare(b[box - 1], '0') != 0){
             return moves1.contains(box - 1) || (moves2.contains(box - 1));
         }
         return false;

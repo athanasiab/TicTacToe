@@ -17,21 +17,21 @@ public class TicTacToe {
         //PC's turn
         //shows the current board
         //shows the current board
-        if(input == 1){ //Easy mode
-            game = new Easy();
-            System.out.println("You entered the easy mode");
-        }else{ //Hard mode
-            game = new Hard();
-            System.out.println("You entered the hard mode");
-        }
-        game.show(); //shows the current board
-        while(game.hasMoves()) {
+        do{
+            if(input == 1){ //Easy mode
+                game = new Easy();
+                System.out.println("You entered the easy mode");
+            }else{ //Hard mode
+                game = new Hard();
+                System.out.println("You entered the hard mode");
+            }
+            game.show(); //shows the current board
             input = inputCheck(game);
             game.insert(input);
             game.show(); //shows the current board
             game.move(); //PC's turn
             game.show(); //shows the current board
-        }
+        }while(game.hasMoves());
 
     }
 
