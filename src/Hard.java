@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Hard extends Mode{
     public Hard(){
     }
@@ -13,13 +15,38 @@ public class Hard extends Mode{
 
     private int choose(){ //picks the box that is better strategically
         int box;
+        ArrayList<Integer> moves1 = b.getMoves1();
+        ArrayList<Integer> moves2 = b.getMoves2();
 
         if(!b.full() && b.state() != -1) {
-
+            //code to check if the player will win on the next move
+            box = nextMove(moves1);
+            if (box != -1){
+                return box;
+            }else{
+                moves1.remove(moves1.size() - 1);
+            }
+            //code to check if it will win on the next move
+            box = nextMove(moves2);
+            if (box != -1){
+                return box;
+            }else{
+                moves1.remove(moves1.size() - 1);
+            }
+            //else will fill the center box or a corner on
+            if (!b.filled(5)){
+                return 5;
+            } else if(!b.filled(1)){
+                return 1;
+            } else if(!b.filled(3)){
+                return 3;
+            }else if(!b.filled(7)){
+                return 7;
+            }else if(!b.filled(9)){
+                return 9;
+            }
 
             //ΣΥΝΘΗΚΕΣ
-            //ΧΡΗΣΗ ΤΩΝ GETS
-
 
             b.insert(box, 2);
         }else{
@@ -30,6 +57,25 @@ public class Hard extends Mode{
                 System.out.print("You lost...");
             }else{
                 System.out.print("It's a tie.");
+            }
+        }
+        return box;
+    }
+
+    private int nextMove(ArrayList<Integer> moves){
+        int box = -1;
+        boolean stop = false;
+
+        for(int i = 0; i < 9 && !stop; i++) {
+            moves.add(i + 1);
+            if(b.filled(moves.get(moves.size() - 1))){ //box already filled
+                moves.remove(moves.size() - 1);
+            }else{
+                if(b.win(moves)){
+                    stop = true;
+                    box = i + 1;
+                }
+                moves.remove(moves.size() - 1);
             }
         }
         return box;

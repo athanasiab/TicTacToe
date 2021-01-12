@@ -11,10 +11,29 @@ public class Board {    //class that designs the board
         }
     }
 
-    public void Show(){ //Creates the visualisation of the board
-
-        //ΠΩΣ ΝΑ ΦΤΙΑΧΝΕΙ ΤΟΝ ΠΙΝΑΚΑ
-
+    public void Show() { //Creates the visualisation of the board
+        int i, j, k = 0;
+        for (i = 0; i <= 18; i++)//width of 19 characters
+        {
+            if ((i == 0) || (i == 6) || (i == 12) || (i == 18))//places for line dividers
+                for (j = 0; j <= 18; j++) {//adds line dividers (length of 19 characters)
+                    System.out.println("-");
+                }
+            else {
+                for (j = 0; j <= 18; j++) {
+                    if ((j == 0) || (j == 6) || (j == 12) || (j == 18))//places for column dividers
+                        System.out.println("|");//column divider
+                    else {
+                        if ((j % 3 == 0) && ((i == 3) || (i == 9) || (i == 15))){//center of the boxes (6, 12 and 18 are checked by the external if)
+                            System.out.println(b[k]);//prints the content of the box from the corresponding table
+                            k++;//counts the place of the table that the repetition proceeds to
+                        } else
+                            System.out.println(" ");
+                        }
+                    }
+                }
+            System.out.println("\n");
+        }
     }
 
 
@@ -63,7 +82,7 @@ public class Board {    //class that designs the board
         return s;
     }
 
-    private boolean win(ArrayList<Integer> moves){ //checks if the player whose moves we add as a parameter has won
+    public boolean win(ArrayList<Integer> moves){ //checks if the player whose moves we add as a parameter has won
         if(moves.contains(1) && moves.contains(5) && moves.contains(9)){ //main diagonal
             return true;
         } else if(moves.contains(3) && moves.contains(5) && moves.contains(7)){ //secondary diagonal
@@ -82,7 +101,7 @@ public class Board {    //class that designs the board
         } else return moves.contains(3) && moves.contains(6) && moves.contains(9);
     }
 
-    private boolean tie() { //checks for tie
+    public boolean tie() { //checks for tie
         if (full()) { //all boxes have been filled
             return !win(moves1) && !win(moves2); //tie
         }
