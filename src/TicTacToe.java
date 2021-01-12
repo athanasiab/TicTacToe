@@ -29,10 +29,8 @@ public class TicTacToe {
             input = inputCheck(game);
             game.insert(input);
             game.show(); //shows the current board
-            if(game.hasMoves()) { //checks whether the game has ended or not
-                game.move(); //PC's turn
-                game.show(); //shows the current board
-            }
+            game.move(); //PC's turn
+            game.show(); //shows the current board
         }
 
     }
