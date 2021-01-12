@@ -26,7 +26,7 @@ public class TicTacToe {
         }
         game.show(); //shows the current board
         while(game.hasMoves()) {
-            input = inputCheck();
+            input = inputCheck(game);
             game.insert(input);
             game.show(); //shows the current board
             if(game.hasMoves()) { //checks whether the game has ended or not
@@ -37,21 +37,18 @@ public class TicTacToe {
 
     }
 
-    static int inputCheck(){ //code for checking users input
+    static int inputCheck(Mode game){ //code for checking users input
         Scanner sc=new Scanner(System.in);
         int input;
         System.out.println("Your turn:");
         do {
             input = sc.nextInt();
             if(input < 1 || input >9){
-                System.out.println("Enter number from 1-9");
+                System.out.println("Enter a number from 1-9");
+            }else if (game.filled(input)){
+                System.out.println("Box is full, please enter another number");
             }
-        }while(input < 1 || input >9);
-
-        //ΝΑ ΖΗΤΑΕΙ ΑΛΛΟ ΚΟΥΤΙ ΑΝ ΕΙΝΑΙ ΓΕΜΑΤΟ
-        //do while δεν ειναι filled
-
-
+        }while(input < 1 || input >9 || game.filled(input));
         return input;
     }
 }

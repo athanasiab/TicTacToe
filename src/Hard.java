@@ -1,12 +1,5 @@
 public class Hard extends Mode{
-    Board b = new Board();
-    boolean end = false; //indicates whether the game has ended or not
-
     public Hard(){
-    }
-
-    public void insert(int box){ //inserts the input of the player
-        b.insert(box, 1);
     }
 
     public void move(){ //returns the index of the array in that corresponds to the box
@@ -40,14 +33,6 @@ public class Hard extends Mode{
             }
         }
         return box;
-    }
-
-    public boolean hasMoves(){ //the game hasn't ended
-        return end;
-    }
-
-    public void show(){ //calls Show from Board
-        b.Show();
     }
 }
 
