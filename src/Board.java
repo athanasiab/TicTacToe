@@ -25,7 +25,11 @@ public class Board {    //class that designs the board
                         System.out.println("|");//column divider
                     else {
                         if ((j % 3 == 0) && ((i == 3) || (i == 9) || (i == 15))){//center of the boxes (6, 12 and 18 are checked by the external if)
-                            System.out.println(b[k]);//prints the content of the box from the corresponding table
+                            if(b[k] != 0) {
+                                System.out.println(b[k]);//prints the content of the box from the corresponding table
+                            }else{
+                                System.out.println(" ");//prints the content of the box from the corresponding table
+                            }
                             k++;//counts the place of the table that the repetition proceeds to
                         } else
                             System.out.println(" ");
