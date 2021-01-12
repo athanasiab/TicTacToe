@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Easy {
+public class Easy extends Mode{
     Board b = new Board();
     Random random = new Random();
     boolean end = false; //indicates whether the game has ended or not

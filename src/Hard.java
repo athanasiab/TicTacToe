@@ -1,4 +1,4 @@
-public class Hard {
+public class Hard extends Mode{
     Board b = new Board();
     boolean end = false; //indicates whether the game has ended or not
 
