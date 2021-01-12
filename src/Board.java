@@ -12,6 +12,20 @@ public class Board {    //class that designs the board
     }
 
     public void Show() { //Creates the visualisation of the board
+        /*
+        char[][] board = {{' ', '|', ' ', '|', ' '},
+                        {'-', '+', '-', '+', '-'},
+                        {' ', '|', ' ', '|', ' '},
+                        {'-', '+', '-', '+', '-'},
+                        {' ', '|', ' ', '|', ' '}};
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                System.out.println(board[i][j]);
+            }
+            System.out.println("\n");
+        }
+        */
+
         int i, j, k = 0;
         for (i = 0; i <= 18; i++)//width of 19 characters
         {
